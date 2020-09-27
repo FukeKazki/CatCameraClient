@@ -6,7 +6,7 @@
 		"ios": "expo start --ios",
 		"web": "expo start --web",
 		"eject": "expo eject",
-		"format": "prettier --write 'App.tsx'"
+		"format": "prettier --write 'App.tsx' 'src/**/*{.ts,.tsx}'"
 	},
 	"dependencies": {
 		"expo": "~39.0.2",
