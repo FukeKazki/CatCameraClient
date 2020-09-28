@@ -6,11 +6,12 @@
 		"ios": "expo start --ios",
 		"web": "expo start --web",
 		"eject": "expo eject",
-		"format": "prettier --write 'App.tsx'"
+		"format": "prettier --write 'App.tsx' 'src/**/*{.ts,.tsx}'"
 	},
 	"dependencies": {
 		"expo": "~39.0.2",
 		"expo-status-bar": "~1.0.2",
+		"firebase": "7.9.0",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
 		"react-native": "https://github.com/expo/react-native/archive/sdk-39.0.2.tar.gz",
