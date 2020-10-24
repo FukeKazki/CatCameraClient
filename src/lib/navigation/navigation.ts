@@ -3,7 +3,7 @@ import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 
 import Daily from '~/component/screens/Daily'
-import ImageViewer from '~/component/organisms/ImageViewer'
+import ImageViewer from '~/component/screens/ImageViewer'
 
 // Daily内部で使用する子ナビゲーター
 const DailyNavigator = createStackNavigator(
