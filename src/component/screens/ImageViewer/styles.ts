@@ -17,7 +17,6 @@ export default StyleSheet.create({
 		height: windowHeight
   },
   closeIcon: {
-    zIndex: 1,
     marginTop: windowWidth / 30,
     marginLeft: windowWidth / 30,
     fontSize: windowWidth / 10,

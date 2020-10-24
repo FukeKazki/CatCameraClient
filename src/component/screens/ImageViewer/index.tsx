@@ -2,15 +2,12 @@ import React, { FC, ReactNode, useState } from 'react'
 import { View, Image, Dimensions, Text } from 'react-native'
 import { Icon, Button } from 'native-base'
 import ImageZoom from 'react-native-image-pan-zoom'
+import { NavigationStackProp } from 'react-navigation-stack'
 
 import styles from './styles'
 
 type props = {
-  state: {
-    params: {
-      url: string,
-    }
-  }
+  navigation: NavigationStackProp<{ url: string }>
 }
 
 const ImageViewer: FC<props> = ({ navigation }) => {
@@ -32,15 +29,6 @@ const ImageViewer: FC<props> = ({ navigation }) => {
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
     >
-      <Button
-        transparent
-        onPress={() => handleClose()}
-      >
-        <Icon
-          name='close'
-          style={styles.closeIcon}
-        />
-      </Button>
       <ImageZoom
         cropWidth={windowSize.width}
         cropHeight={windowSize.height}

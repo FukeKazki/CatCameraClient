@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
+import { NavigationStackProp } from 'react-navigation-stack'
 
 import { Image } from '../../../../types'
 import { Firebase } from '~/lib/firebase/firebase'
 import GridContainer from '~/component/organisms/GridContainer'
 import ImageContainer from '~/component/atoms/Image'
+
+
+type props = {
+  navigation: NavigationStackProp<{ userId: string }>
+}
 
 const Daily = ({ navigation }) => {
 	const [images, setImages] = useState<Image[]>([])
@@ -27,6 +33,7 @@ const Daily = ({ navigation }) => {
 				{images.map(image => (
           <TouchableOpacity
             onPress={() => onPressImage(image.url)}
+            key={image.url}
           >
             <ImageContainer
               url={image.url}
