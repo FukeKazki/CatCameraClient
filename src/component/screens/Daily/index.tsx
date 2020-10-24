@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { TouchableOpacity } from 'react-native'
 
 import { Image } from '../../../../types'
 import { Firebase } from '~/lib/firebase/firebase'
 import GridContainer from '~/component/organisms/GridContainer'
 import ImageContainer from '~/component/atoms/Image'
 
-const Daily = () => {
+const Daily = ({ navigation }) => {
 	const [images, setImages] = useState<Image[]>([])
 
 	useEffect(() => {
@@ -16,14 +17,22 @@ const Daily = () => {
 		})()
 	}, [])
 
+  const onPressImage = (url) => {
+    navigation.navigate('ImageViewer', { url: url })
+  }
+
 	return (
 		<>
 			<GridContainer>
 				{images.map(image => (
-					<ImageContainer
-						url={image.url}
-						key={image.url}
-					/>
+          <TouchableOpacity
+            onPress={() => onPressImage(image.url)}
+          >
+            <ImageContainer
+              url={image.url}
+              key={image.url}
+            />
+          </TouchableOpacity>
 				))}
 			</GridContainer>
 		</>
