@@ -4,6 +4,7 @@ import { windowWidth, windowHeight } from '~/lib/style/styles'
 
 export default StyleSheet.create({
   container: {
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: '#000000CD',
     overflow: 'hidden',
     height: windowHeight
@@ -17,9 +18,10 @@ export default StyleSheet.create({
 		height: windowHeight
   },
   closeIcon: {
-    marginTop: windowWidth / 30,
-    marginLeft: windowWidth / 30,
+    position: 'absolute',
+    top: windowWidth / 30,
+    left: windowWidth / 30,
     fontSize: windowWidth / 10,
-    color: '#FFFFFF'
+    color: '#FFFFFF88'
   }
 })

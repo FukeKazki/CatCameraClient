@@ -24,26 +24,33 @@ const ImageViewer: FC<props> = ({ navigation }) => {
   }
 
   return (
-    <View
-      centerContent
-      style={styles.container}
-      contentContainerStyle={styles.contentContainer}
-    >
-      <ImageZoom
-        cropWidth={windowSize.width}
-        cropHeight={windowSize.height}
-        imageWidth={windowSize.width}
-        imageHeight={windowSize.height}
+    <>
+     <View
+        centerContent
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
       >
-        <Image
-          style={styles.image}
-          source={{
-            uri: `${url}`
-          }}
-          resizeMode='contain'
-        />
-      </ImageZoom>
-    </View>
+        <ImageZoom
+          cropWidth={windowSize.width}
+          cropHeight={windowSize.height}
+          imageWidth={windowSize.width}
+          imageHeight={windowSize.height}
+        >
+          <Image
+            style={styles.image}
+            source={{
+              uri: `${url}`
+            }}
+            resizeMode='contain'
+          />
+        </ImageZoom>
+      </View>
+      <Icon
+        name='close'
+        style={styles.closeIcon}
+        onPress={handleClose}
+      />
+    </>
   )
 }
 
