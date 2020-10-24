@@ -6,22 +6,25 @@ import { NavigationStackProp } from 'react-navigation-stack'
 
 import styles from './styles'
 
-type props = {
-  navigation: NavigationStackProp<{ url: string }>
+type NavigateProps = {
+	url: string
 }
 
-const ImageViewer: FC<props> = ({ navigation }) => {
+type Props = {
+	navigation: NavigationStackProp<{}, NavigateProps>
+}
 
-  const [url, setUrl] = useState(navigation.state.params.url)
+const ImageViewer: FC<Props> = ({ navigation }) => {
+	const [url, setUrl] = useState(navigation.state.params?.url)
 
-  const [windowSize, setWindowSize] = useState({
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height
-  })
+	const [windowSize, setWindowSize] = useState({
+		width: Dimensions.get('window').width,
+		height: Dimensions.get('window').height
+	})
 
-  const handleClose = () => {
-    navigation.goBack()
-  }
+	const handleClose = () => {
+		navigation.goBack()
+	}
 
   return (
     <>

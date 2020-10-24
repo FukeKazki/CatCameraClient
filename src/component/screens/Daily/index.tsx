@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { NavigationStackProp } from 'react-navigation-stack'
 
@@ -8,11 +8,11 @@ import GridContainer from '~/component/organisms/GridContainer'
 import ImageContainer from '~/component/atoms/Image'
 
 
-type props = {
-  navigation: NavigationStackProp<{ userId: string }>
+type Props = {
+	navigation: NavigationStackProp<{ userId: string }>
 }
 
-const Daily = ({ navigation }) => {
+const Daily: FC<Props> = ({ navigation }) => {
 	const [images, setImages] = useState<Image[]>([])
 
 	useEffect(() => {
