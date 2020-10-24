@@ -15,5 +15,12 @@ export default StyleSheet.create({
   image: {
 		width: windowWidth,
 		height: windowHeight
+  },
+  closeIcon: {
+    zIndex: 1,
+    marginTop: windowWidth / 30,
+    marginLeft: windowWidth / 30,
+    fontSize: windowWidth / 10,
+    color: '#FFFFFF'
   }
 })
