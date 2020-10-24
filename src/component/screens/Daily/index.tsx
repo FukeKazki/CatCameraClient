@@ -23,7 +23,7 @@ const Daily = ({ navigation }) => {
 		})()
 	}, [])
 
-  const onPressImage = (url) => {
+  const onPressImage = (url: string) => {
     navigation.navigate('ImageViewer', { url: url })
   }
 
