@@ -8,8 +8,6 @@ type props = {
   state: {
     params: {
       url: string,
-      zoomWidth: number,
-      zoomHeight: number,
     }
   }
 }
