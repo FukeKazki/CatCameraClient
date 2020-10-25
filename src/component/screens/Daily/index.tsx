@@ -19,12 +19,24 @@ const Daily: FC<Props> = ({ navigation }) => {
 		(async () => {
 			const res = await Firebase.imagesCollection().get()
 			const images = res.docs.map(value => value.data()) as Array<Image>
-			setImages(images)
+      sortImages(images, 'date', true)
 		})()
 	}, [])
 
   const onPressImage = (url: string) => {
     navigation.navigate('ImageViewer', { url: url })
+  }
+
+  const sortImages = (images: Arras<Image>, orderBy: string, isDescending: boolean = false) => {
+    switch (orderBy) {
+
+      case 'date':
+        setImages(images.sort((a, b) => (a.postTime.seconds - b.postTime.seconds) * (isDescending ? (-1) : 1)))
+
+      default:
+        setImages(images.sort((a, b) => (a.postTime.seconds - b.postTime.seconds) * (isDescending ? (-1) : 1)))
+
+    }
   }
 
 	return (
