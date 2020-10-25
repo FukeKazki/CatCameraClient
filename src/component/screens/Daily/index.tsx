@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { ScrollView, TouchableOpacity } from 'react-native'
 import { NavigationStackProp } from 'react-navigation-stack'
 
 import { Image } from '../../../../types'
@@ -29,19 +29,21 @@ const Daily: FC<Props> = ({ navigation }) => {
 
 	return (
 		<>
-			<GridContainer>
-				{images.map(image => (
-          <TouchableOpacity
-            onPress={() => onPressImage(image.url)}
-            key={image.url}
-          >
-            <ImageContainer
-              url={image.url}
+      <ScrollView>
+        <GridContainer>
+          {images.map(image => (
+            <TouchableOpacity
+              onPress={() => onPressImage(image.url)}
               key={image.url}
-            />
-          </TouchableOpacity>
-				))}
-			</GridContainer>
+            >
+              <ImageContainer
+                url={image.url}
+                key={image.url}
+              />
+            </TouchableOpacity>
+          ))}
+        </GridContainer>
+      </ScrollView>
 		</>
 	)
 }
