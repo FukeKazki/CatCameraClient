@@ -28,7 +28,7 @@ const ImageViewer: FC<Props> = ({ navigation }) => {
 
   return (
     <>
-     <View
+      <View
         centerContent
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
