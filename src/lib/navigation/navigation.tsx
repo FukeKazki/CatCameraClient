@@ -52,9 +52,9 @@ const AppNavigator = createMaterialBottomTabNavigator(
   },
   {
     initialRouteName: 'Daily',
-    activeColor: '#89B1FC',
-    inactiveColor: '#93979A',
-    barStyle: { backgroundColor: '#2D3033' },
+    activeColor: '#B16B26',
+    inactiveColor: '#777777',
+    barStyle: { backgroundColor: '#FDF0DE' },
   }
 )
 
