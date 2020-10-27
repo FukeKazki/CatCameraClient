@@ -1,6 +1,9 @@
 import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs"
+
+import { MaterialIcons, MaterialCommunityIcons } from 'react-native-vector-icons'
 
 import Daily from '~/component/screens/Daily'
 import ImageViewer from '~/component/screens/ImageViewer'
@@ -23,15 +26,35 @@ const DailyNavigator = createStackNavigator(
 )
 
 // 全体で使用する親ナビゲーター
-const AppNavigator = createStackNavigator(
+// const AppNavigator = createMaterialTopTabNavigator(
+// const AppNavigator = createBottomTabNavigator(
+const AppNavigator = createMaterialBottomTabNavigator(
   {
     Daily: {
-      screen: DailyNavigator
+      screen: DailyNavigator,
+      navigationOptions: {
+        tabBarLabel: 'フォト',
+        tabBarIcon: ({ tintColor, focused }) => (
+          <MaterialIcons size={25} name='photo' style={{ color: tintColor }} />
+        )
+      },
     },
+    Favorite: {
+      screen: DailyNavigator,
+      navigationOptions: {
+        tabBarLabel: 'お気に入り',
+        tabBarIcon: ({ tintColor, focused }) => (
+          <MaterialCommunityIcons size={25} name='heart' style={{ color: tintColor }} />
+        )
+      },
+    }
     // ここに新しいナビゲーションを追加する
   },
   {
     initialRouteName: 'Daily',
+    activeColor: '#89B1FC',
+    inactiveColor: '#93979A',
+    barStyle: { backgroundColor: '#2D3033' },
   }
 )
 
