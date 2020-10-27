@@ -26,8 +26,6 @@ const DailyNavigator = createStackNavigator(
 )
 
 // 全体で使用する親ナビゲーター
-// const AppNavigator = createMaterialTopTabNavigator(
-// const AppNavigator = createBottomTabNavigator(
 const AppNavigator = createMaterialBottomTabNavigator(
   {
     Daily: {
