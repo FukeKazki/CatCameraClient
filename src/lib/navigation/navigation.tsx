@@ -8,6 +8,8 @@ import { MaterialIcons, MaterialCommunityIcons } from 'react-native-vector-icons
 import Daily from '~/component/screens/Daily'
 import ImageViewer from '~/component/screens/ImageViewer'
 
+import { componentBaseColor, activeColor, inactiveColor } from '~/utils/colors.ts'
+
 // Daily内部で使用する子ナビゲーター
 const DailyNavigator = createStackNavigator(
   {
@@ -50,9 +52,9 @@ const AppNavigator = createMaterialBottomTabNavigator(
   },
   {
     initialRouteName: 'Daily',
-    activeColor: '#B16B26',
-    inactiveColor: '#777777',
-    barStyle: { backgroundColor: '#FDF0DE' },
+    activeColor: activeColor,
+    inactiveColor: inactiveColor,
+    barStyle: { backgroundColor: componentBaseColor },
   }
 )
 
