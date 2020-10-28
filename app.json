@@ -19,6 +19,11 @@
 		"ios": {
 			"supportsTablet": true
 		},
+		"android": {
+			"package": "com.develop.app",
+			"versionCode": 1,
+			"permissions": []
+		},
 		"web": {
 			"favicon": "./assets/favicon.png"
 		}
