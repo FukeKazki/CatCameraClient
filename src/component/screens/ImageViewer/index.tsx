@@ -29,9 +29,7 @@ const ImageViewer: FC<Props> = ({ navigation }) => {
   return (
     <>
       <View
-        centerContent
         style={styles.container}
-        contentContainerStyle={styles.contentContainer}
       >
         <ImageZoom
           cropWidth={windowSize.width}
