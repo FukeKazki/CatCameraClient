@@ -19,43 +19,44 @@ const Daily: FC<Props> = ({ navigation }) => {
 		(async () => {
 			const res = await Firebase.imagesCollection().get()
 			const images = res.docs.map(value => value.data()) as Array<Image>
-      sortImages(images, 'date', true)
+			sortImages(images, 'date', true)
 		})()
 	}, [])
 
-  const onPressImage = (url: string) => {
-    navigation.navigate('ImageViewer', { url: url })
-  }
+	const onPressImage = (url: string) => {
+		navigation.navigate('ImageViewer', { url: url })
+	}
 
-  const sortImages = (images: Arras<Image>, orderBy: string, isDescending: boolean = false) => {
-    switch (orderBy) {
+	const sortImages = (images: Array<Image>, orderBy: string, isDescending: boolean = false) => {
+		switch (orderBy) {
 
-      case 'date':
-        setImages(images.sort((a, b) => (a.postTime.seconds - b.postTime.seconds) * (isDescending ? (-1) : 1)))
+			case 'date':
+				setImages(images.sort((a, b) => (a.postTime.seconds - b.postTime.seconds) * (isDescending ? (-1) : 1)))
+				break
 
-      default:
-        setImages(images.sort((a, b) => (a.postTime.seconds - b.postTime.seconds) * (isDescending ? (-1) : 1)))
+			default:
+				setImages(images.sort((a, b) => (a.postTime.seconds - b.postTime.seconds) * (isDescending ? (-1) : 1)))
 
-    }
-  }
+		}
+	}
 
 	return (
 		<>
-      <ScrollView>
-        <GridContainer>
-          {images.map(image => (
-            <TouchableOpacity
-              onPress={() => onPressImage(image.url)}
-              key={image.url}
-            >
-              <ImageContainer
-                url={image.url}
-                key={image.url}
-              />
-            </TouchableOpacity>
-          ))}
-        </GridContainer>
-      </ScrollView>
+			<ScrollView>
+				<GridContainer>
+					{images.map(image => (
+						<TouchableOpacity
+							onPress={() => onPressImage(image.url)}
+							key={image.url}
+						>
+							<ImageContainer
+								url={image.url}
+								key={image.url}
+							/>
+						</TouchableOpacity>
+					))}
+				</GridContainer>
+			</ScrollView>
 		</>
 	)
 }
