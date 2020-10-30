@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useState } from 'react'
-import { ScrollView, TouchableOpacity } from 'react-native'
+import { ScrollView, TouchableOpacity, View } from 'react-native'
 import { NavigationStackProp } from 'react-navigation-stack'
 
 import { Image } from '../../../../types'
 import { Firebase } from '~/lib/firebase/firebase'
 import GridContainer from '~/component/organisms/GridContainer'
 import ImageContainer from '~/component/atoms/Image'
-
+import styles from './styles'
 
 type Props = {
 	navigation: NavigationStackProp<{ userId: string }>
@@ -41,7 +41,7 @@ const Daily: FC<Props> = ({ navigation }) => {
 	}
 
 	return (
-		<>
+		<View style={styles.container}>
 			<ScrollView>
 				<GridContainer>
 					{images.map(image => (
@@ -57,7 +57,7 @@ const Daily: FC<Props> = ({ navigation }) => {
 					))}
 				</GridContainer>
 			</ScrollView>
-		</>
+		</View>
 	)
 }
 
