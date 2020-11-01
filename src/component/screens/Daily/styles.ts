@@ -3,6 +3,7 @@ import { componentBaseColor } from '~/utils/colors'
 
 export default StyleSheet.create({
 	container: {
-		backgroundColor: componentBaseColor
+		backgroundColor: componentBaseColor,
+		flex: 1
 	}
 })
