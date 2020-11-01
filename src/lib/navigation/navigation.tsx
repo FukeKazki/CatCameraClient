@@ -33,10 +33,14 @@ const FavoriteNavigator = createStackNavigator(
 	{
 		Favorite: {
 			screen: Favorite
+		},
+		ImageViewer: {
+			screen: ImageViewer
 		}
 	},
 	{
 		initialRouteName: 'Favorite',
+		mode: 'modal',
 		headerMode: 'none'
 	}
 )
