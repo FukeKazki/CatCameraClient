@@ -1,11 +1,10 @@
 import React, { FC } from 'react'
 import { ScrollView, TouchableOpacity, View } from 'react-native'
 import { NavigationStackProp } from 'react-navigation-stack'
-
 import { Image } from '../../../../types'
+import styles from './styles'
 import GridContainer from '~/component/organisms/GridContainer'
 import ImageContainer from '~/component/atoms/Image'
-import styles from './styles'
 
 type Props = {
 	navigation: NavigationStackProp<{ url: string }>
@@ -14,8 +13,8 @@ type Props = {
 	}
 }
 
-const Daily: FC<Props> = ({ navigation, screenProps }) => {
-	const images = screenProps.images
+const Favorite: FC<Props> = ({ navigation, screenProps }) => {
+	const images = screenProps.images.filter(image => image.isFavorite)
 
 	const onPressImage = (url: string) => {
 		navigation.navigate('ImageViewer', { url: url })
@@ -42,4 +41,4 @@ const Daily: FC<Props> = ({ navigation, screenProps }) => {
 	)
 }
 
-export default Daily
+export default Favorite
