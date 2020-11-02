@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Header as NBHeader, Button, Left } from 'native-base'
+import { Header as NBHeader, Button, Left, Right } from 'native-base'
 import { MaterialIcons } from '@expo/vector-icons'
 
 import styles from './styles'
@@ -16,6 +16,7 @@ const Header: FC<Props> = ({ openDrawer }) => (
 				<MaterialIcons name='menu' size={25} color={activeColor} />
 			</Button>
 		</Left>
+		<Right></Right>
 	</NBHeader>
 )
 
