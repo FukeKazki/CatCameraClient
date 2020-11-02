@@ -2,6 +2,7 @@ import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
+import { createDrawerNavigator } from 'react-navigation-drawer'
 
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
 
@@ -46,7 +47,7 @@ const FavoriteNavigator = createStackNavigator(
 )
 
 // 全体で使用する親ナビゲーター
-const AppNavigator = createMaterialBottomTabNavigator(
+const TabNavigator = createMaterialBottomTabNavigator(
 	{
 		Daily: {
 			screen: DailyNavigator,
@@ -73,6 +74,28 @@ const AppNavigator = createMaterialBottomTabNavigator(
 		activeColor: activeColor,
 		inactiveColor: inactiveColor,
 		barStyle: { backgroundColor: componentBaseColor }
+	}
+)
+
+const AppNavigator = createDrawerNavigator(
+	{
+		Home: {
+			screen: TabNavigator,
+			navigationOptions: {
+				title: 'HOME',
+				drawerIcon: ({ tintColor }) => (
+					<MaterialIcons name="home" size={25} color={tintColor} />
+				)
+			}
+		}
+	},
+	{
+		initialRouteName: 'Home',
+		drawerBackgroundColor: componentBaseColor,
+		contentOptions: {
+			activeTintColor: activeColor,
+			inactiveTintColor: inactiveColor
+		}
 	}
 )
 
