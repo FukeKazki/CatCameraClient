@@ -1,13 +1,14 @@
 import React, { FC } from 'react'
 import { ScrollView, TouchableOpacity, View } from 'react-native'
-import { NavigationStackProp } from 'react-navigation-stack'
 import { Image } from '../../../../types'
 import styles from './styles'
 import GridContainer from '~/component/organisms/GridContainer'
 import ImageContainer from '~/component/atoms/Image'
+import Header from '~/component/organisms/Header'
+import { NavigationDrawerProp } from 'react-navigation-drawer'
 
 type Props = {
-	navigation: NavigationStackProp<{ url: string }>
+	navigation: NavigationDrawerProp<{ url: string }>
 	screenProps: {
 		images: Image[]
 	}
@@ -22,6 +23,7 @@ const Favorite: FC<Props> = ({ navigation, screenProps }) => {
 
 	return (
 		<View style={styles.container}>
+			<Header openDrawer={navigation.openDrawer} />
 			<ScrollView>
 				<GridContainer>
 					{images.map(image => (
