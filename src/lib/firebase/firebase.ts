@@ -11,6 +11,10 @@ class Fire {
 	imagesCollection() {
 		return firebase.firestore().collection('images')
 	}
+
+	catsCollection() {
+		return firebase.firestore().collection('cats')
+	}
 }
 
 export const Firebase = new Fire()
