@@ -10,6 +10,7 @@ import Daily from '~/component/screens/Daily'
 import ImageViewer from '~/component/screens/ImageViewer'
 import Favorite from '~/component/screens/Favorite'
 import Album from '~/component/screens/Album'
+import AlbumViewer from '~/component/screens/AlbumViewer'
 
 import { componentBaseColor, activeColor, inactiveColor } from '~/utils/colors.ts'
 
@@ -47,6 +48,38 @@ const FavoriteNavigator = createStackNavigator(
 	}
 )
 
+const AlbumViewerNavigator = createStackNavigator(
+	{
+		AlbumViewer: {
+			screen: AlbumViewer
+		},
+		ImageViewer: {
+			screen: ImageViewer
+		}
+	},
+	{
+		initialRouteName: 'AlbumViewer',
+		mode: 'modal',
+		headerMode: 'none'
+	}
+)
+
+const AlbumNavigator = createStackNavigator(
+	{
+		Album: {
+			screen: Album
+		},
+		AlbumViewer: {
+			screen: AlbumViewerNavigator
+		}
+	},
+	{
+		initialRouteName: 'Album',
+		mode: 'card',
+		headerMode: 'none'
+	}
+)
+
 // 全体で使用する親ナビゲーター
 const TabNavigator = createMaterialBottomTabNavigator(
 	{
@@ -69,7 +102,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
 			}
 		},
 		Album: {
-			screen: Album,
+			screen: AlbumNavigator,
 			navigationOptions: {
 				tabBarLabel: 'アルバム',
 				tabBarIcon: ({ tintColor }) => (
