@@ -9,6 +9,7 @@ import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
 import Daily from '~/component/screens/Daily'
 import ImageViewer from '~/component/screens/ImageViewer'
 import Favorite from '~/component/screens/Favorite'
+import Album from '~/component/screens/Album'
 
 import { componentBaseColor, activeColor, inactiveColor } from '~/utils/colors.ts'
 
@@ -64,6 +65,15 @@ const TabNavigator = createMaterialBottomTabNavigator(
 				tabBarLabel: 'お気に入り',
 				tabBarIcon: ({ tintColor, focused }) => (
 					<MaterialCommunityIcons size={25} name='heart' style={{ color: tintColor }} />
+				)
+			}
+		},
+		Album: {
+			screen: Album,
+			navigationOptions: {
+				tabBarLabel: 'アルバム',
+				tabBarIcon: ({ tintColor }) => (
+					<MaterialIcons name="photo-album" size={25} color={tintColor} />
 				)
 			}
 		}
