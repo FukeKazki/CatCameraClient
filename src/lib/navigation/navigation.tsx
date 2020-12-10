@@ -11,8 +11,10 @@ import ImageViewer from '~/component/screens/ImageViewer'
 import Favorite from '~/component/screens/Favorite'
 import Album from '~/component/screens/Album'
 import AlbumViewer from '~/component/screens/AlbumViewer'
+import Upload from '~/component/screens/Upload'
 
 import { componentBaseColor, activeColor, inactiveColor } from '~/utils/colors.ts'
+import UploadSelectView from '~/component/screens/UploadSelectView'
 
 
 // Daily内部で使用する子ナビゲーター
@@ -43,6 +45,22 @@ const FavoriteNavigator = createStackNavigator(
 	},
 	{
 		initialRouteName: 'Favorite',
+		mode: 'modal',
+		headerMode: 'none'
+	}
+)
+
+const UploadNavigator = createStackNavigator(
+	{
+		Upload: {
+			screen: Upload
+		},
+		UploadSelectView: {
+			screen: UploadSelectView
+		}
+	},
+	{
+		initialRouteName: 'Upload',
 		mode: 'modal',
 		headerMode: 'none'
 	}
@@ -87,7 +105,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
 			screen: DailyNavigator,
 			navigationOptions: {
 				tabBarLabel: 'フォト',
-				tabBarIcon: ({ tintColor, focused }) => (
+				tabBarIcon: ({ tintColor }) => (
 					<MaterialIcons size={25} name='photo' style={{ color: tintColor }} />
 				)
 			}
@@ -96,7 +114,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
 			screen: FavoriteNavigator,
 			navigationOptions: {
 				tabBarLabel: 'お気に入り',
-				tabBarIcon: ({ tintColor, focused }) => (
+				tabBarIcon: ({ tintColor }) => (
 					<MaterialCommunityIcons size={25} name='heart' style={{ color: tintColor }} />
 				)
 			}
@@ -126,6 +144,15 @@ const AppNavigator = createDrawerNavigator(
 			screen: TabNavigator,
 			navigationOptions: {
 				title: 'HOME',
+				drawerIcon: ({ tintColor }) => (
+					<MaterialIcons name="home" size={25} color={tintColor} />
+				)
+			}
+		},
+		Upload: {
+			screen: UploadNavigator,
+			navigationOptions: {
+				title: 'UPLOAD',
 				drawerIcon: ({ tintColor }) => (
 					<MaterialIcons name="home" size={25} color={tintColor} />
 				)
