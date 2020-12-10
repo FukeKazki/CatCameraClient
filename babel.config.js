@@ -9,7 +9,15 @@ module.exports = function(api) {
 					'rootPathPrefix': '~',
 					'rootPathSuffix': 'src'
 				}
-			]
+			],
+			['react-native-dotenv', {
+				'moduleName': '@env',
+				'path': '.env',
+				'blacklist': null,
+				'whitelist': null,
+				'safe': false,
+				'allowUndefined': true
+			}]
 		]
 	}
 }
