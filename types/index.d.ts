@@ -3,6 +3,9 @@ export interface Image {
 	url: string
 	postTime: firebase.firestore.Timestamp
 	cats?: string[]
+	cat_boxes?: []
+	labels?: string[]
+	label?: string
 }
 
 export interface Cat {

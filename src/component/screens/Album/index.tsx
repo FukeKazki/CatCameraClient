@@ -34,7 +34,7 @@ const Album: FC<Props> = ({ navigation, screenProps }) => {
 		]
 	 */
 	const classifiedCats = cats.map(cat => (
-		images.filter(image => image.cats?.find(v => v === cat.name))
+		images.filter(image => image.labels?.find(v => v === cat.name))
 	))
 
 	const navigateDaily = (index: number): void => {

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import AppNavigator from './src/lib/navigation/navigation'
 import { Image } from './types'
 import { Firebase } from '~/lib/firebase/firebase'
+import { UploadProvider } from '~/lib/context/upload'
 
 export default function App() {
 	const [images, setImages] = useState<Image[]>([])
@@ -29,10 +30,12 @@ export default function App() {
 	}
 
 	return (
-		<AppNavigator
-			screenProps={{
-				images: images
-			}}
-		/>
+		<UploadProvider>
+			<AppNavigator
+				screenProps={{
+					images: images
+				}}
+			/>
+		</UploadProvider>
 	)
 }
