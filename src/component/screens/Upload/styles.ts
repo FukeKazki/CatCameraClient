@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { componentBaseColor } from '~/utils/colors'
+import { componentBaseColor, activeColor } from '~/utils/colors'
 
 export default StyleSheet.create({
 	container: {
@@ -15,7 +15,8 @@ export default StyleSheet.create({
 	learningButton: {
 		position: 'absolute',
 		bottom: 50,
-		right: '50%',
+		right: '52%',
+		backgroundColor: activeColor,
 		transform: [
 			{ translateX: 70 }
 		]

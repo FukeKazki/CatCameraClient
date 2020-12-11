@@ -5,11 +5,11 @@ import { NavigationDrawerProp } from 'react-navigation-drawer'
 import { UploadContext } from '~/lib/context/upload'
 import axios from 'axios'
 import SelectLineItem from '~/component/molecules/SelectLineItem'
-import IconButton from '~/component/atoms/IconButton'
 import styles from './styles'
 import { Button, Icon, Text } from 'native-base'
 // @ts-ignore
 import { SERVER_URL } from '@env'
+import FabButton from '~/component/molecules/FabButton'
 
 type Props = {
 	navigation: NavigationDrawerProp<{}>
@@ -68,11 +68,7 @@ const Upload: FC<Props> = ({ navigation }) => {
 				/>
 			))}
 
-			<IconButton
-				onPress={handleAddLine} iconName={'pluscircleo'}
-				style={styles.fabButton}
-				iconSize={50}
-			/>
+			<FabButton onPress={handleAddLine} />
 
 			<Button iconLeft onPress={handleSubmit} style={styles.learningButton}>
 				<Icon type={'AntDesign'} name={'API'} />
