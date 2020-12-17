@@ -68,10 +68,8 @@ export const DailyImagesProvider: FC = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 
 	const fetchImages = useCallback(async (): Promise<Image[]> => {
-		const res = await Firebase.imagesCollection().get()
-		const images = res.docs.map(value => value.data()) as Image[]
-
-		return images
+		const res = await Firebase.imagesCollection().orderBy('postTime', 'desc').get()
+		return res.docs.map(value => value.data()) as Image[]
 	}, [])
 
 	useEffect(() => {
