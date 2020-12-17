@@ -1,5 +1,5 @@
-import React, { FC, useContext, useEffect } from 'react'
-import { View, ScrollView, TouchableOpacity } from 'react-native'
+import React, { FC, useContext } from 'react'
+import { View, ScrollView, TouchableOpacity, Text } from 'react-native'
 import { Image } from '../../../../types'
 import GridContainer from '~/component/organisms/GridContainer'
 import ImageContainer from '~/component/atoms/Image'
@@ -7,21 +7,19 @@ import styles from './styles'
 import Header from './Header'
 import { NavigationStackProp } from 'react-navigation-stack'
 import { UploadContext } from '~/lib/context/upload'
+import { DailyImagesContext } from '~/lib/context/dailyImages'
 
 type Params = {
 	label: string
 }
 
 type Props = {
-	screenProps: {
-		images: Image[]
-	},
 	navigation: NavigationStackProp<{}, Params>
 }
 
-const UploadSelectView: FC<Props> = ({ screenProps, navigation }) => {
+const UploadSelectView: FC<Props> = ({ navigation }) => {
 	const { selected, addLabelToImage, removeLabelToImage } = useContext(UploadContext)
-	const images = screenProps.images
+	const { state } = useContext(DailyImagesContext)
 	const label = navigation.state.params!.label
 
 	const handleSelected = (image: Image) => {
@@ -33,28 +31,33 @@ const UploadSelectView: FC<Props> = ({ screenProps, navigation }) => {
 		}
 	}
 
-	useEffect(() => {
-	}, [])
-
 	return (
 		<View style={styles.container}>
 			<Header navigation={navigation} />
-			<ScrollView>
-				<GridContainer>
-					{images.map(image => (
-						<TouchableOpacity
-							onPress={() => handleSelected(image)}
-							key={image.url}
-						>
-							<ImageContainer
-								url={image.url}
+			{state.status === 'loading' && (
+				<Text>Loading...</Text>
+			)}
+			{state.status === 'error' && (
+				<Text>{state.error}</Text>
+			)}
+			{state.status === 'success' && (
+				<ScrollView>
+					<GridContainer>
+						{state.images.map(image => (
+							<TouchableOpacity
+								onPress={() => handleSelected(image)}
 								key={image.url}
-								style={selected.includes(image) ? styles.activeImage : undefined}
-							/>
-						</TouchableOpacity>
-					))}
-				</GridContainer>
-			</ScrollView>
+							>
+								<ImageContainer
+									url={image.url}
+									key={image.url}
+									style={selected.includes(image) ? styles.activeImage : undefined}
+								/>
+							</TouchableOpacity>
+						))}
+					</GridContainer>
+				</ScrollView>
+			)}
 		</View>
 	)
 }
