@@ -4,16 +4,20 @@ import styles from './styles'
 
 type Props = {
 	handleLeftIconClick: () => void
+	handleRightIconClick: () => void
 }
 
-const ImageViewerHeader: FC<Props> = ({ handleLeftIconClick, ...props }) => {
+const ImageViewerHeader: FC<Props> = ({ handleLeftIconClick, handleRightIconClick, ...props }) => {
 	return (
 		<Header style={styles.container} {...props}>
 			<Left>
 				<Icon name='close' onPress={handleLeftIconClick} style={styles.closeIcon} />
 			</Left>
 			<Body></Body>
-			<Right></Right>
+			<Right>
+				<Icon name='clouddownloado' type='AntDesign' onPress={handleRightIconClick}
+					  style={styles.downloadIcon} />
+			</Right>
 		</Header>
 	)
 }

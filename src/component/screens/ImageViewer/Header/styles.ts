@@ -11,5 +11,10 @@ export default StyleSheet.create({
 	closeIcon: {
 		fontSize: windowWidth / 10,
 		color: inactiveColor
+	},
+	downloadIcon: {
+		fontSize: windowWidth / 12,
+		color: inactiveColor,
+		marginRight: 4
 	}
 })
