@@ -1,5 +1,7 @@
 <h1 align='center'>ねこカメラ</h1>
 <h3 align='center'>愛猫との思い出づくり</h3>
+<p align='center'>RaspberryPIのカメラが猫と人を自動認識し、ツーショットを撮影します！アプリから写真を閲覧、DeepLearningによって猫の自動分類を実現しました！</p>
+
 <br/>
 <p align='center'>九州アプリチャレンジキャラバン: 🏆福岡ビジネスデジタルコンテンツ賞</p>
 <p align='center'>福岡ビジネスデジタルコンテンツ: 🏆ヤング賞</p>
