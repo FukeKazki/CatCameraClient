@@ -1,21 +1,31 @@
-import { StatusBar } from 'expo-status-bar'
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useEffect } from 'react'
+
+import AppNavigator from './src/lib/navigation/navigation'
+import { UploadProvider } from '~/lib/context/upload'
+import { DailyImagesProvider } from '~/lib/context/dailyImages'
+import { requestPermissionsAsync, getPermissionsAsync } from 'expo-media-library'
 
 export default function App() {
+	useEffect(() => {
+		getPermissionsAsync()
+			.then(res => {
+				if (!res.granted) {
+					requestPermissionsAsync()
+						.catch(e => {
+							console.error(e)
+						})
+				}
+			})
+			.catch(e => {
+				console.error(e)
+			})
+	}, [])
+
 	return (
-		<View style={styles.container}>
-			<Text>Open up App.tsx to start working on your app!</Text>
-			<StatusBar style='auto' />
-		</View>
+		<DailyImagesProvider>
+			<UploadProvider>
+				<AppNavigator />
+			</UploadProvider>
+		</DailyImagesProvider>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center'
-	}
-})
